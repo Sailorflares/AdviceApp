@@ -3,7 +3,6 @@ class CreateAdvices < ActiveRecord::Migration
     create_table :advices do |t|
       t.text :advice_text
       t.text :url
-      
 
       t.timestamps
     end
