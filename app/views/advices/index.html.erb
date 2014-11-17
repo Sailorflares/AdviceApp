@@ -1,12 +1,20 @@
-<% @user.advices.each do |advice| %>
-   <div class="col-sm-6 col-md-4">
+<div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x300" alt="...">
       <div class="caption">
-        <h3><%=advice.url%></h3>
-        <p><%=advice.advice_text%></p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <%= render 'form' %>
       </div>
     </div>
   </div>
-<%end%>
+
+<% @user.advices.each do |advice| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <p><%=advice.advice_text%></p>
+        <p><%=advice.url%></p>
+        <p>Taggs will go here...</p>
+        <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>
+      </div>
+    </div>
+  </div>
+<%end%> 

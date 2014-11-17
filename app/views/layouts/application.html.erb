@@ -7,6 +7,29 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <script>
+  $(document).ready(function(){
+    $(".btn-worked").click(function(e){
+      $this = $(this);
+      $.ajax({
+        type: "POST",
+        url:"/upvotes", 
+        success:function(result){
+        $this.text("YES!");
+      }});
+    });
+
+    $(".btn-didnt-work").click(function(e){
+      $this = $(this);
+      $.ajax({
+        type: "POST",
+        url:"/upvotes", 
+        success:function(result){
+        $this.text("NOPE!");
+      }});
+    });
+  });
+  </script>
+  <script>
     (function(d, s, id){
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {return;}
@@ -43,14 +66,24 @@
   </script>
 </head>
 <body>
-  <div id="user-widget">
-    <% if current_user %>
-      Hey there <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AdviseMe</a>
+      
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <p class="navbar-text">Hey there <strong><%= current_user.name %></strong>!</p>
+          <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        <% else %>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+</nav>
+
   <%= yield %>
 </body>
 </html>

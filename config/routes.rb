@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   resources :users do
     resources :advices, only: [:index, :new, :create]
   end
-  
+
   resources :sessions
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
+  resources :upvotes
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -19,6 +19,7 @@ class AdvicesController < ApplicationController
 
   def index
     @user = current_user
+    @new_advice = Advice.new
   end
 
   private
