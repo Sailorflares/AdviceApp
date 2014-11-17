@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'sessions#home'
 
-  resources :advices, only: [:index, :new, :create]
-  resources :users
+  resources :users do
+    resources :advices, only: [:index, :new, :create]
+  end
+  
   resources :sessions
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

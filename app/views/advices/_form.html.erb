@@ -1,4 +1,4 @@
-<%= form_for @advice do |f| %>
+<%= form_for @advice, url: user_advices_path do |f| %>
   <%= f.label :advice_text %>:
   <%= f.text_field :advice_text %><br />
 

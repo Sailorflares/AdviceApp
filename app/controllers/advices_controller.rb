@@ -11,9 +11,9 @@ class AdvicesController < ApplicationController
     @advice.user = current_user
     @advice.save
     if @advice.save
-      redirect_to advices_path
+      redirect_to user_advices_path
     else
-      redirect_to new_advice_path
+      redirect_to new_user_advice_path
     end
   end
 
