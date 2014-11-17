@@ -1,0 +1,9 @@
+<%= form_for @advice do |f| %>
+  <%= f.label :advice_text %>:
+  <%= f.text_field :advice_text %><br />
+
+  <%= f.label :url %>:
+  <%= f.text_field :url %><br />
+
+  <%= f.submit %>
+<% end %>
