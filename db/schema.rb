@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20141119005841) do
     t.integer  "user_id"
   end
 
+  create_table "upvotes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_advices", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
