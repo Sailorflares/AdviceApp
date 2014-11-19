@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :advices
+  has_many :user_advices
+  has_many :advices, through: :user_advices
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
