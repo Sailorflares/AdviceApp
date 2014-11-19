@@ -1,6 +1,6 @@
 class Advice < ActiveRecord::Base
+  has_many :users, through: :user_advices
   has_many :user_advices
-  belongs_to :user, :through => :user_advices
 
   validates_presence_of :advice_text, :url
   
