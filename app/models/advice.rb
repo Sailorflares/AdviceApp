@@ -1,5 +1,6 @@
 class Advice < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_advices
+  belongs_to :user, :through => :user_advices
 
   validates_presence_of :advice_text, :url
   

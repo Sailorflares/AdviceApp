@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117212036) do
+ActiveRecord::Schema.define(version: 20141119005841) do
 
   create_table "advices", force: true do |t|
     t.text     "advice_text"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141117212036) do
     t.integer  "user_id"
   end
 
-  create_table "upvotes", force: true do |t|
+  create_table "user_advices", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20141117212036) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
