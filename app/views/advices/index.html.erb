@@ -1,16 +1,8 @@
-<div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <%= render 'form' %>
-      </div>
-    </div>
-  </div>
-
-<% @user.advices.each do |advice| %>
+<h1>Literally, all of advice. Nothing searched or formatted</h1>
+<% @advice.each do |advice| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
-        <p><%=advice.advice_text%></p>
         <p><%=advice.url%></p>
         <p>Taggs will go here...</p>
         <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>

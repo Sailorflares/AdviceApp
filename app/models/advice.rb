@@ -1,10 +1,14 @@
 class Advice < ActiveRecord::Base
-  has_many :users, through: :user_advices
   has_many :user_advices
+  has_many :users, through: :user_advices
 
-  validates_presence_of :advice_text, :url
+  #validates_presence_of :advice_text, :url
   
-  validate :contained_on_page? 
+  #validate :contained_on_page? 
+
+  def posts_new_advice(url)
+    advice = Advice.find_or_create_by(url: url)
+  end
 
   private
 
