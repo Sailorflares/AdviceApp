@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  resources :upvotes
+
+  get 'tags/:tag', to: 'articles#index', as: :tag
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
