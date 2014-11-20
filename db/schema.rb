@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20141119005841) do
   create_table "user_advices", force: true do |t|
     t.integer  "user_id"
     t.integer  "advice_id"
-    t.text     "advice_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
