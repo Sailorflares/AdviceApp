@@ -4,23 +4,24 @@
   <%= link_to 'Add Advice', new_advice_path %>
 </div>
 
-<% @user.advices.each do |advice| %>
-<% advice.user_advices.each do |user_advice| %>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <div class="caption" data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
-        <p><%= advice.url %></p>
-        <p>Taggs will go here...</p>
-        <p>
-          <a class="btn btn-primary btn-worked" role="button">It worked! :)</a> 
-          <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
-        </p>
+<div class='wrapper'>
+  <% @user.advices.each do |advice| %>
+  <% advice.user_advices.each do |user_advice| %>
+    <div class="col-md-4 user-advice" data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+      <div class="thumbnail" >
+        <div class="caption">
+          <p><%= advice.url %></p>
+          <p>Taggs will go here...</p>
+          <p>
+            <a href='users/<%= @user.id %>/user_advices/<%=user_advice.id %>' data-method='post' class="btn btn-primary btn-worked" role="button">It worked! :)</a> 
+            <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-<%end%> 
-
+  <% end %>
+  <%end%> 
+</div>
 <p>
 <% @user.advices.each do |advice| %>
 <% advice.user_advices.each do |thing| %>

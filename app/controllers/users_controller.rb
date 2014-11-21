@@ -7,8 +7,12 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  # def vote
-  #   @user = current_user
-  #   @user.update_vote 
-  # end
+  def upvote
+    @user = current_user
+    if @user.user_advices.upvote == false
+      @user.user_advices.upvote.update(true)
+    else
+      @user.user_advices.upvote.update(true)
+    end
+  end
 end
