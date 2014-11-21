@@ -20,6 +20,7 @@ class AdvicesController < ApplicationController
   end
 
   def index
+    @advice = Advice.new
     if params[:tag]
       @advices = Advice.tagged_with(params[:tag])
     else

@@ -4,12 +4,17 @@ class Advice < ActiveRecord::Base
 
   acts_as_taggable
 
-  #validates_presence_of :advice_text, :url
+  validates_presence_of :url, :tag_list
   
   #validate :contained_on_page? 
 
   def posts_new_advice(url)
     advice = Advice.find_or_create_by(url: url)
+  end
+
+  def url_title
+    binding.pry
+    Nokogiri::HTML(open(self.url)).css('title').children.text
   end
 
   private

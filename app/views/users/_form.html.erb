@@ -1,0 +1,10 @@
+<%= form_for @advice do |f| %>
+
+  <%= f.label :url %>:
+  <%= f.text_field :url %><br />
+
+  <%= f.label :tag_list, "Tags (separated by commas)" %>:
+  <%= f.text_field :tag_list %><br />
+
+  <%= f.submit %>
+<% end %>
