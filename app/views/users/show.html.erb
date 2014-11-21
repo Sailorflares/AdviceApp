@@ -1,6 +1,8 @@
 <p>User Show HTML ERB</p>
 
-<%= link_to 'Add Advice', new_advice_path %>
+<div class="col-sm-12 col-md-12">
+  <%= link_to 'Add Advice', new_advice_path %>
+</div>
 
 <% @user.advices.each do |advice| %>
   <div class="col-sm-6 col-md-4">
@@ -16,3 +18,11 @@
     </div>
   </div>
 <%end%> 
+
+<p>
+<% @user.advices.each do |advice| %>
+<% advice.user_advices.each do |thing| %>
+<%= thing.upvote %>
+<% end %>
+<% end %>
+</p>
