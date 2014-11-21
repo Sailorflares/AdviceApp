@@ -12,7 +12,7 @@
     <div class="thumbnail">
       <div class="caption">
         <p><%=advice.url%></p>
-        <p><%=advice.url_title%></p>
+        <p>advice.url_title will go here</p>
         <p>
         Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %>
         </p>

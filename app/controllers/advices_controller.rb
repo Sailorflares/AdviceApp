@@ -7,7 +7,7 @@ class AdvicesController < ApplicationController
   end
 
   def create
-    @advice = Advice.find_or_create_by(advice_params)
+    @advice = Advice.find_or_create_by(url: params["advice"]["url"])
     if @advice# this path means the advice was found or newly created
       @advice.tag_list.add(params["advice"]["tag_list"], :parse => true)
       @advice.save

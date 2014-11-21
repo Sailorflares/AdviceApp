@@ -6,15 +6,21 @@ class Advice < ActiveRecord::Base
 
   validates_presence_of :url, :tag_list
   
-  #validate :contained_on_page? 
+  #validate :valid?
 
   def posts_new_advice(url)
     advice = Advice.find_or_create_by(url: url)
   end
 
   def url_title
-    binding.pry
     Nokogiri::HTML(open(self.url)).css('title').children.text
+  end
+
+  def url_valid?
+    uri = URI.parse(url)
+    uri.kind_of?(URI::HTTP)
+  rescue URI::InvalidURIError
+    false
   end
 
   private
