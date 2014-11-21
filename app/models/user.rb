@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   validates :uid, :uniqueness => {:scope => :provider}
 
+  def update_votes
+    self.user_advices.vote = true
+  end
+
   def self.login_from_omniauth(auth)
     find_from_omniauth(auth) || create_from_omniauth(auth)
   end

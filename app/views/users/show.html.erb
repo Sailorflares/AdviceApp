@@ -5,9 +5,10 @@
 </div>
 
 <% @user.advices.each do |advice| %>
+<% advice.user_advices.each do |user_advice| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <div class="caption">
+      <div class="caption" data-advice-id='<%= advice.id %>'>
         <p><%=advice.url%></p>
         <p>Taggs will go here...</p>
         <p>
@@ -17,6 +18,7 @@
       </div>
     </div>
   </div>
+<% end %>
 <%end%> 
 
 <p>
