@@ -1,11 +1,10 @@
-<h1>Literally, all of advice. Nothing searched or formatted</h1>
-<% @advice.each do |advice| %>
+<% @advices.each do |advice| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
         <p><%=advice.url%></p>
         <p>
-        Tags: <%= raw advice.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+        Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %>
         </p>
         <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>
       </div>

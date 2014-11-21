@@ -8,7 +8,7 @@
       <div class="caption">
         <p><%=advice.url%></p>
         <p>
-        Tags: <%= raw advice.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+        Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %>
         </p>
         <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>
       </div>
