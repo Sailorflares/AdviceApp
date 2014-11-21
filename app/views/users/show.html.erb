@@ -1,12 +1,12 @@
 <p>User Show HTML ERB</p>
 
-<div class="col-sm-12 col-md-12">
+<div class="col-md-12">
   <%= link_to 'Add Advice', new_advice_path %>
 </div>
 
 <% @user.advices.each do |advice| %>
 <% advice.user_advices.each do |user_advice| %>
-  <div class="col-sm-6 col-md-4">
+  <div class="col-md-4">
     <div class="thumbnail">
       <div class="caption" data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
         <p><%= advice.url %></p>
