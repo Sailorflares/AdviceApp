@@ -2,6 +2,8 @@ class Advice < ActiveRecord::Base
   has_many :user_advices
   has_many :users, through: :user_advices
 
+  acts_as_taggable
+
   #validates_presence_of :advice_text, :url
   
   #validate :contained_on_page? 
