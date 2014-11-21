@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119005841) do
+ActiveRecord::Schema.define(version: 20141120232757) do
 
   create_table "advices", force: true do |t|
     t.text     "url"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141119005841) do
     t.integer  "advice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "upvote",     default: false
   end
 
   create_table "users", force: true do |t|
@@ -32,11 +33,6 @@ ActiveRecord::Schema.define(version: 20141119005841) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "votes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
