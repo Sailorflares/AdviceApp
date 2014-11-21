@@ -6,42 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-  <script>
-    (function(d, s, id){
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));  
-    
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId:   '1491949827760019',
-        xfbml:   true,
-        version: 'v2.2'
-      });
-
-      $('#sign_in').click(function(e){
-        e.preventDefault();
-          FB.login(function(response) {
-            if (response.authResponse) {
-              window.location = '/auth/facebook/callback?' + $.param({signed_request: response.authResponse.signedRequest});
-            } 
-          });
-      });
-        
-      $('#sign_out').click(function(e){
-        FB.getLoginStatus(function(response){
-          if(response.authResponse){
-            FB.logout();
-          }
-        });
-        return true;
-      });
-    };
-  </script>
 </head>
 <body>
   

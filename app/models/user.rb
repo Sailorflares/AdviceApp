@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   validates :uid, :uniqueness => {:scope => :provider}
 
-  def update_votes
+  def update_vote
     self.user_advices.vote = true
   end
 

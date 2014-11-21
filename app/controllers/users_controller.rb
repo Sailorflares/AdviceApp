@@ -6,4 +6,9 @@ class UsersController < ApplicationController
   def show
     @user = current_user
   end
+
+  # def vote
+  #   @user = current_user
+  #   @user.update_vote 
+  # end
 end
