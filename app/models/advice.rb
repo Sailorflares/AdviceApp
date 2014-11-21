@@ -19,4 +19,5 @@ class Advice < ActiveRecord::Base
       errors.add(:advice_text, "Sorry, that advice doesn't seem to be in the URL you provided.")
     end
   end
+
 end

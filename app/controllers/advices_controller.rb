@@ -2,6 +2,10 @@ class AdvicesController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
 
+  def index
+    @advice = Advice.all
+  end
+
   def new
     @advice = Advice.new
   end
@@ -17,8 +21,9 @@ class AdvicesController < ApplicationController
     end
   end
 
-  def index
-    @advice = Advice.all
+  def vote
+    @advice = Advice.find(params[:id])
+    @advice.
   end
 
   private
