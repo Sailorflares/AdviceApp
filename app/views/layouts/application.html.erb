@@ -8,38 +8,37 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">AdviseMe</a>  
-        </div>
+  <div class="site-wrapper">
 
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Advise App</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          </div>
+          <div class="inner cover">
+          <%= yield %>
+          </div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            </div>
+          </div>
 
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <p class="navbar-text">Hey there <strong><%= current_user.name %></strong>!</p>
-              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-            <% else %>
-              <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-            <% end %>
-          </ul>
         </div>
-      </nav>
+
       </div>
+
     </div>
-    <div class="row">
-      <div class="col-md-12">
-      <%= yield %>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
