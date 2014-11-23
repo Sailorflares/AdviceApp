@@ -1,10 +1,10 @@
 <%= render 'layouts/header' %>
 
-<div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
-    <div class="caption">
-      <%= render 'form' %>
-    </div>
+<div class="row">
+  <div>
+    <p>Advices Index</p>
+    <h2><%= link_to 'Add Advice', new_advice_path %><h2>
+    <%= render 'advices/form' %>
   </div>
 </div>
 
