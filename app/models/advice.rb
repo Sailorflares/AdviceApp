@@ -18,16 +18,16 @@ class Advice < ActiveRecord::Base
     @doc.css('h1').text
   end
 
-  def url_title
-    Nokogiri::HTML(open(self.url)).css('title').children.text
-  end
+  # def url_title
+  #   Nokogiri::HTML(open(self.url)).css('title').children.text
+  # end
 
-  def url_valid?
-    uri = URI.parse(url)
-    uri.kind_of?(URI::HTTP)
-  rescue URI::InvalidURIError
-    false
-  end
+  # def url_valid?
+  #   uri = URI.parse(url)
+  #   uri.kind_of?(URI::HTTP)
+  # rescue URI::InvalidURIError
+  #   false
+  # end
 
   private
     def check_url
