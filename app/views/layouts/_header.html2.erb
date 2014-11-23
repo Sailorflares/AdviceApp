@@ -1,0 +1,35 @@
+<nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div id="navbar" class="collapse navbar-collapse">
+          <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Advice App</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <% if current_user %>
+                    <li>Hey there <strong><%= current_user.name %></strong>!</li>
+                    <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+                  <% end %>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="container fluid">
+      
+      <div class="starter-template">
+        <%= yield %>
+      </div>
+
+    </div>

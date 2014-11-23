@@ -1,61 +1,44 @@
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">AdviseMe</a>  
-        </div>
+<%= render 'layouts/header' %>
 
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+<div class="row">
+  <div>
+    <p>User Show HTML ERB</p>
+    <h2><%= link_to 'Add Advice', new_advice_path %><h2>
+    <%= form_for @advice do |f| %>
+      <%= f.label :url %>:
+      <%= f.text_field :url %><br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+    <div class='wrapper'>
+      <% @user.advices.each do |advice| %>
+        <% advice.user_advices.each do |user_advice| %>
+        <div class='col=md-2'>
+        </div>
+          <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+            <div class="thumbnail" >
+              <div class="caption">
+                <p><%= advice.url %></p>
+                <p>Taggs will go here...</p>
+                <p>
+                  <a href='users/<%= @user.id %>/user_advices/<%=user_advice.id %>' data-method='post' class="btn btn-primary btn-worked" role="button">It worked! :)</a> 
+                  <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
+                </p>
+              </div>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <p class="navbar-text">Hey there <strong><%= current_user.name %></strong>!</p>
-              <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-            <% else %>
-              <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+          </div>
+        <% end %>
+      <%end%> 
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-      <%= yield %>
-      </div>
     </div>
   </div>
-
-<p>User Show HTML ERB</p>
-
-<div class="col-md-12">
-  <%= link_to 'Add Advice', new_advice_path %>
 </div>
 
-<div class='wrapper'>
-  <% @user.advices.each do |advice| %>
-  <% advice.user_advices.each do |user_advice| %>
-    <div class="col-md-4 user-advice" data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
-      <div class="thumbnail" >
-        <div class="caption">
-          <p><%= advice.url %></p>
-          <p>Taggs will go here...</p>
-          <p>
-            <a href='users/<%= @user.id %>/user_advices/<%=user_advice.id %>' data-method='post' class="btn btn-primary btn-worked" role="button">It worked! :)</a> 
-            <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <%end%> 
-</div>
+
+
 <p>
 <% @user.advices.each do |advice| %>
 <% advice.user_advices.each do |thing| %>
