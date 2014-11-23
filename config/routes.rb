@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'sessions#index'
 
-  resources :users do
+  resources :users, :only => [:show] do
     resources :user_advices
   end
   resources :advices#, only: [:index, :new, :create]

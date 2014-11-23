@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @advice = Advice.new
+    @advices = @user.advices.order('created_at DESC') 
   end
 
   def upvote
