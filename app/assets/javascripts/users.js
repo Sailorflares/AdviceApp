@@ -1,5 +1,5 @@
 $(function(){
-  $('.wrapper').on('click', '.btn-worked', function(e){ 
+  $('.wrapper').on('click', '.btn-yes', function(e){ 
     e.preventDefault();
     $(this).empty();
     $(this).text("YES");

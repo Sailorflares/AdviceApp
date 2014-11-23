@@ -8,11 +8,20 @@ class Advice < ActiveRecord::Base
   
   #validate :contained_on_page? 
 
+  validates_presence_of :url
+  validate :check_url
+
   def create_url_title(url)
     @doc = Nokogiri::HTML(open(url))
     @doc.css('h1').text
   end
 
+  private
+    def check_url
+      if !self.url.include?('.html')
+        errors[:url] << 'Must include .html'
+      end
+    end
   # def posts_new_advice(url)
   #   advice = Advice.find_or_create_by(url: url)
   # end
