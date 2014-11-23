@@ -13,15 +13,21 @@
     <% advice.user_advices.each do |user_advice| %>
       <div class='col=md-2'>
       </div>
-      <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
         <div class="thumbnail" >
           <div class="caption">
             <h3><%= advice.create_url_title(advice.url) %></h3>
-            <p><%=link_to advice.url, advice.url %></p>
+            <p class='url'><%=link_to advice.url, advice.url %></p>
             <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
             <div class='vote-btns'>
-            <p><%= link_to 'It worked ;)', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-yes', :role => 'button' %>
-              <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %></p>
+              <p>
+              <% if user_advice.upvote == true %>
+                <%= link_to 'YES', :role => 'button', :class => 'btn btn-primary btn-yes' %>
+                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %></p>
+            <% else %> 
+                <%= link_to 'It worked :)', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-yes greybtn', :role => 'button' %>
+                <%= link_to 'NO', :class => 'btn btn-primary btn-no', :role => 'button' %></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -31,7 +37,7 @@
 </div>
 
 <p>
-<% @user.advices.each do |advice| %>
+<% @advices.each do |advice| %>
 <% advice.user_advices.each do |thing| %>
 <%= thing.upvote %>
 <% end %>

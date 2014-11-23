@@ -6,7 +6,7 @@ class Advice < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates_presence_of :url, :tag_list
+  validates_presence_of :url#, :tag_list
   
   #validate :valid?
 
@@ -32,7 +32,7 @@ class Advice < ActiveRecord::Base
   private
     def check_url
       if !self.url.include?('.com')
-        errors[:url] << 'Must include .html'
+        errors[:url] << 'Must include .com'
       end
     end
   # def posts_new_advice(url)
