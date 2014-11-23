@@ -12,6 +12,7 @@ class Advice < ActiveRecord::Base
     @doc = Nokogiri::HTML(open(url))
     @doc.css('h1').text
   end
+
   # def posts_new_advice(url)
   #   advice = Advice.find_or_create_by(url: url)
   # end

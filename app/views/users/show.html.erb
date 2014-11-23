@@ -15,7 +15,7 @@
 </div>
 
 <div class='row wrapper'>
-  <% @user.advices.each do |advice| %>
+  <% @user.advices.order('created_at DESC').each do |advice| %>
     <% advice.user_advices.each do |user_advice| %>
       <div class='col=md-2'>
       </div>
