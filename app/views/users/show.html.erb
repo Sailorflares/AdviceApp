@@ -22,8 +22,8 @@
       <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
         <div class="thumbnail" >
           <div class="caption">
-            <p><%= advice.create_url_title(advice.url) %></p>
-            <p><%= advice.url %></p>
+            <h3><%= advice.create_url_title(advice.url) %></h3>
+            <p><%=link_to advice.url, advice.url %></p>
             <p>Taggs will go here...</p>
             <p><%= link_to 'It worked ;)', user_user_advices_path(@user.id, user_advice.id), :class => 'btn btn-primary btn-worked', :role => 'button' %>
               <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
