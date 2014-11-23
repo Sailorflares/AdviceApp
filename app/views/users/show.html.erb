@@ -20,7 +20,7 @@
             <p><%=link_to advice.url, advice.url %></p>
             <p>Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %></p>
             <p><%= link_to 'It worked ;)', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-yes', :role => 'button' %>
-              <%= link_to 'Not so much :(', user_user_advices_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %>
+              <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %>
             </p>
           </div>
         </div>
