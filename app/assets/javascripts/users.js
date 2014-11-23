@@ -1,6 +1,6 @@
 $(function(){
-  $('.wrapper').on('click', '.btn-worked', function(){ 
-
+  $('.wrapper').on('click', '.btn-worked', function(e){ 
+    e.preventDefault();
     $(this).empty();
     $(this).text("YES");
 
