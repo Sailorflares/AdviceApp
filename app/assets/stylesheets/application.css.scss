@@ -11,12 +11,11 @@
  * file per style scope.
  *
  *= require_self
- *= require_tree .
- *= require starter-template
  *= require cover
-
+ *= require starter-template
+ *= require custom
 
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap'
+

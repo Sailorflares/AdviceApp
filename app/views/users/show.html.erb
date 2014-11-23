@@ -4,40 +4,36 @@
   <div>
     <p>User Show HTML ERB</p>
     <h2><%= link_to 'Add Advice', new_advice_path %><h2>
-    <%= form_for @advice do |f| %>
-      <%= f.label :url %>:
-      <%= f.text_field :url %><br />
-      <%= f.submit %>
+    <%= form_for @advice, :html => {:role => 'form'} do |f| %>
+      <div class='form-group'>
+        <%= f.label :url, 'url:' %>
+        <%= f.text_field :url, :autofocus => true, :placeholder => 'Enter url', :style => 'color: black' %>
+      </div>
+      <%= f.submit :class => 'btn btn-default' %>
     <% end %>
   </div>
 </div>
 
-    <div class='wrapper'>
-      <% @user.advices.each do |advice| %>
-        <% advice.user_advices.each do |user_advice| %>
-        <div class='col=md-2'>
-        </div>
-          <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
-            <div class="thumbnail" >
-              <div class="caption">
-                <p><%= advice.url %></p>
-                <p>Taggs will go here...</p>
-                <p>
-                  <a href='<%= @user.id %>/user_advices/<%=user_advice.id %>' data-method='post' class="btn btn-primary btn-worked" role="button">It worked! :)</a> 
-                  <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <%end%> 
+<div class='row wrapper'>
+  <% @user.advices.each do |advice| %>
+    <% advice.user_advices.each do |user_advice| %>
+      <div class='col=md-2'>
       </div>
-    </div>
-    </div>
-  </div>
+      <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+        <div class="thumbnail" >
+          <div class="caption">
+            <p><%= advice.create_url_title(advice.url) %></p>
+            <p><%= advice.url %></p>
+            <p>Taggs will go here...</p>
+            <p><%= link_to 'It worked ;)', user_user_advices_path(@user.id, user_advice.id), :class => 'btn btn-primary btn-worked', :role => 'button' %>
+              <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%end%> 
 </div>
-
-
 
 <p>
 <% @user.advices.each do |advice| %>
