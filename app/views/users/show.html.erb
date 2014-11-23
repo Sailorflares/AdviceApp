@@ -4,17 +4,7 @@
   <div>
     <p>User Show HTML ERB</p>
     <h2><%= link_to 'Add Advice', new_advice_path %><h2>
-    <%= form_for @advice, :html => {:role => 'form'} do |f| %>
-      <div class='form-group has-error'>
-        <%= f.label :url, 'url:' %>
-        <%= f.text_field :url, :autofocus => true, :placeholder => 'enter url', :style => 'color: black' %>
-      </div>
-      <div class='form-group has-error'>
-        <%= f.label :tag_list, "tags:" %>
-        <%= f.text_field :tag_list, :placeholder => 'separated by commas', :style => 'color: black' %>
-      </div>
-      <%= f.submit :class => 'btn btn-default' %>
-    <% end %>
+    <%= render 'advices/form' %>
   </div>
 </div>
 
