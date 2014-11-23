@@ -19,9 +19,10 @@
             <h3><%= advice.create_url_title(advice.url) %></h3>
             <p><%=link_to advice.url, advice.url %></p>
             <p>Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %></p>
+            <div class='vote-btns'>
             <p><%= link_to 'It worked ;)', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-yes', :role => 'button' %>
-              <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %>
-            </p>
+              <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %></p>
+            </div>
           </div>
         </div>
       </div>
