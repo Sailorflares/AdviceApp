@@ -1,23 +1,48 @@
-<div class="col-sm-3">
-  <div class="thumbnail">
-    <div class="caption">
-      <%= render 'form' %>      
-    </div>
+<%= render 'layouts/header' %>
+
+<div class="row">
+  <div>
+    <p>User Show HTML ERB</p>
+    <h2><%= link_to 'Add Advice', new_advice_path %><h2>
+    <%= form_for @advice, :html => {:role => 'form'} do |f| %>
+      <div class='form-group has-error'>
+        <%= f.label :url, 'url:' %>
+        <%= f.text_field :url, :autofocus => true, :placeholder => 'enter url', :style => 'color: black' %>
+      </div>
+      <div class='form-group has-error'>
+        <%= f.label :tag_list, "tags:" %>
+        <%= f.text_field :tag_list, :placeholder => 'separated by commas', :style => 'color: black' %>
+      </div>
+      <%= f.submit :class => 'btn btn-default' %>
+    <% end %>
   </div>
 </div>
 
-
-<% @user.advices.each do |advice| %>
-  <div class="col-sm-3">
-    <div class="thumbnail">
-      <div class="caption">
-        <p><%=advice.url%></p>
-        <p>advice.url_title will go here</p>
-        <p>
-        Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %>
-        </p>
-        <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>
+<div class='row wrapper'>
+  <% @advices.each do |advice| %>
+    <% advice.user_advices.each do |user_advice| %>
+      <div class='col=md-2'>
       </div>
-    </div>
-  </div>
-<%end%> 
+      <div class='col-md-8 col-md-offset-2' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+        <div class="thumbnail" >
+          <div class="caption">
+            <h3><%= advice.create_url_title(advice.url) %></h3>
+            <p><%=link_to advice.url, advice.url %></p>
+            <p>Tags: <%= raw advice.tag_list.map { |t| link_to t, advices_path(t) }.join(', ') %></p>
+            <p><%= link_to 'It worked ;)', user_user_advice_path(@user.id, user_advice), :class => 'btn btn-primary btn-yes', :role => 'button' %>
+              <%= link_to 'Not so much :(', user_user_advices_path(@user.id, user_advice), :class => 'btn btn-primary btn-no', :role => 'button' %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <%end%> 
+</div>
+
+<p>
+<% @user.advices.each do |advice| %>
+<% advice.user_advices.each do |thing| %>
+<%= thing.upvote %>
+<% end %>
+<% end %>
+</p>

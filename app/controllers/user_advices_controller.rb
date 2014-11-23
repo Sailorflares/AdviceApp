@@ -1,2 +1,3 @@
 class UserAdvicesController < ApplicationController
+  
 end

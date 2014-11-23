@@ -11,7 +11,7 @@ class AdvicesController < ApplicationController
     if @advice# this path means the advice was found or newly created
       @advice.tag_list.add(params["advice"]["tag_list"], :parse => true)
       @advice.save
-      current_user.user_advices.create(advice_id: @advice.id)
+      current_user.user_advices.find_or_create_by(advice_id: @advice.id)
       #do I need to do something redirective if this user_advices doesn't save?
       redirect_to user_path(current_user)
     else #this means something went wrong
@@ -28,10 +28,13 @@ class AdvicesController < ApplicationController
     end
   end
 
-  private
-
-  def advice_params
-    params.require(:advice).permit(:url, { tag_list: [] })
+  def vote
+    @advice = Advice.find(params[:id])
   end
+
+  private
+    def advice_params
+      params.require(:advice).permit(:url, { tag_list: [] })
+    end
 
 end
