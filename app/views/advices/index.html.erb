@@ -15,7 +15,9 @@
       <div class="caption">
         <h3><%= advice.create_url_title(advice.url) %></h3>
         <p class='url'><%=link_to advice.url, advice.url %></p>
-        <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+        <div class='tags'>
+          <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+        </div>
         <div class='ratio'>
          <p><%= advice.ratio(advice.id) %></p>
        </div>
