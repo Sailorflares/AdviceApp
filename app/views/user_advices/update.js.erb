@@ -7,8 +7,9 @@
   
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-no').addClass('.greybtn');
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').removeClass('.greybtn');
+  
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').addClass('bluebtn');
-
+  $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-no').removeClass('.bluebtn');
   // $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').removeAttr('data-method')
   // $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').attr('data-method'. 'get')
 
@@ -20,7 +21,9 @@
   
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-no').removeClass('.greybtn');
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').addClass('.greybtn');
+  
   $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-no').addClass('bluebtn');
+  $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').removeClass('.bluebtn');
   // $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-yes').removeAttr('data-method')
   // $('div[data-user-advice-id="' + <%= @user_advice.id %> + '"]').find('.btn-no').attr('data-method', 'post')                                                                                 
 <% end %>
