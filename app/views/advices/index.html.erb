@@ -17,6 +17,7 @@
         Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %>
         </p>
         <p><a class="btn btn-primary btn-worked" role="button">It worked! :)</a> <a href="#" class="btn btn-default btn-didnt-work" role="button">Not so much :(</a></p>
+        <p> <%= advice.ratio(advice.id) %> </p>
       </div>
     </div>
   </div>

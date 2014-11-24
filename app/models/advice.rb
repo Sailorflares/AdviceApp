@@ -18,6 +18,24 @@ class Advice < ActiveRecord::Base
     @doc.css('h1').text
   end
 
+  # def total_votes(id)
+  #   UserAdvice.where(:advice_id => id).count
+  # end
+
+  # def pos_vote(id)
+  #   UserAdvice.where(:advice_id => id, :upvote => true).count
+  # end
+
+  # def ratio(id)
+  #   ((self.pos_vote(id)).to_f)/self.total_votes(id)
+  # end
+
+  def ratio(id)
+    total = UserAdvice.where(:advice_id => id).count
+    upvotes = UserAdvice.where(:advice_id => id, :upvote => true).count
+    "#{upvotes}/#{total} (#{(upvotes.to_f/total).round(2) * 100}%)"
+  end
+
   # def url_title
   #   Nokogiri::HTML(open(self.url)).css('title').children.text
   # end
