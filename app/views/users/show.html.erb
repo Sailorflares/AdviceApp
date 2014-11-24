@@ -41,11 +41,3 @@
     <% end %>
   <%end%> 
 </div>
-
-<p>
-<% @advices.each do |advice| %>
-<% advice.user_advices.each do |thing| %>
-<%= thing.upvote %>
-<% end %>
-<% end %>
-</p>
