@@ -24,12 +24,16 @@
             <div class='vote-btns'>
               <p>
               <% if user_advice.upvote == true %>
-                <%= link_to 'YES', :role => 'button', :class => 'btn btn-primary btn-yes' %>
-                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %></p>
-            <% else %> 
+                <%= link_to 'YES', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'get', :role => 'button', :class => 'btn btn-primary btn-yes' %>
+                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %>
+            <% elsif user_advice.upvote == false %> 
                 <%= link_to 'It worked :)', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-yes greybtn', :role => 'button' %>
-                <%= link_to 'NO', :class => 'btn btn-primary btn-no', :role => 'button' %></p>
+                <%= link_to 'NO', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'get', :class => 'btn btn-primary btn-no', :role => 'button' %>
+              <% else %>
+                <%= link_to 'It worked :)', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-yes greybtn', :role => 'button' %>
+                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %>
               <% end %>
+              </p>
             </div>
           </div>
         </div>
