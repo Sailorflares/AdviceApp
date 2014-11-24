@@ -8,16 +8,19 @@
   </div>
 </div>
 
+<div class ='row'>
 <% @advices.each do |advice| %>
   <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
+    <div class="thumbnail" >
       <div class="caption">
-        <p><%=advice.url%></p>
-        <p>
-        Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %>
-        </p>
-        <p> <%= advice.ratio(advice.id) %> </p>
+        <h3><%= advice.create_url_title(advice.url) %></h3>
+        <p class='url'><%=link_to advice.url, advice.url %></p>
+        <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+        <div class='ratio'>
+         <p><%= advice.ratio(advice.id) %></p>
+       </div>
       </div>
     </div>
   </div>
 <%end%> 
+</div>
