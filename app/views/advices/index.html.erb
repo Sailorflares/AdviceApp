@@ -19,7 +19,7 @@
           <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
         </div>
         <div class='ratio'>
-         <p><%= advice.ratio(advice.id) %></p>
+         <h4><%= advice.ratio(advice.id) %></h4>
        </div>
       </div>
     </div>
