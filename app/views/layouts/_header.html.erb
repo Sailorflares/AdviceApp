@@ -18,7 +18,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav masthead-nav">
             <% if current_user %>
-              <li>Hey there <strong><%= current_user.name %></strong>!</li>
+              <li>Hey there <strong><%=link_to current_user.name, user_path %></strong>!</li>
               <li class='fb-logout'><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
               </div>
             <% end %>
