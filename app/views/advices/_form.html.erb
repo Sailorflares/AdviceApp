@@ -1,9 +1,10 @@
-<%= form_for @advice, :html => {:role => 'form'} do |f| %>
-  <div class='form-group has-error'>
+<%= simple_form_for @advice, :html => {:role => 'form'} do |f| %>
+  <%= f.error_notification %>
+  <div class='form-group'>
     <%= f.label :url, 'url:' %>
-    <%= f.text_field :url, :autofocus => true, :placeholder => 'enter url' %>
+    <%= f.text_field :url, :autofocus => true, :placeholder => 'enter url', input_html: { "data-tooltip" => true, :class => "has-tip", :title => "Bla bla bla" } %>
   </div>
-  <div class='form-group has-error'>
+  <div class='form-group'>
     <%= f.label :tag_list, "tags:" %>
     <%= f.text_field :tag_list, :placeholder => 'separated by commas' %>
   </div>
