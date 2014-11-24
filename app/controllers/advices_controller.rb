@@ -22,9 +22,9 @@ class AdvicesController < ApplicationController
   def index
     @advice = Advice.new
     if params[:tag]
-      @advices = Advice.tagged_with(params[:tag])
+      @advices = Advice.tagged_with(params[:tag]).order('created_at DESC')
     else
-      @advices = Advice.all
+      @advices = Advice.all.order('created_at DESC')
     end
   end
 
