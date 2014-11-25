@@ -9,7 +9,7 @@
 
 <div class='row wrapper'>
   
-    <% @user.user_advices.each do |user_advice| %>
+    <% @user.user_advices.order('created_at DESC').each do |user_advice| %>
     
       <div class='col=md-2'>
       </div>
