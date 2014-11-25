@@ -11,10 +11,10 @@
  * file per style scope.
  *
  *= require_self
+ *= require bootstrap
  *= require cover
  *= require starter-template
  *= require custom
 
  */
 
-@import 'bootstrap'

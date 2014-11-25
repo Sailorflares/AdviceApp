@@ -1113,7 +1113,7 @@ p {
 }
 @media (min-width: 768px) {
   .lead {
-    font-size: 21px;
+    font-size: 40px;
   }
 }
 small,
