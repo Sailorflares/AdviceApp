@@ -2,27 +2,30 @@
 
 <div class="row">
   <div>
-    <p>Advices Index</p>
     <h2><%= link_to 'Add Advice', new_advice_path %><h2>
     <%= render 'advices/form' %>
   </div>
 </div>
 
 <div class ='row'>
-<% @advices.each do |advice| %>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail" >
-      <div class="caption">
-        <h3><%= advice.create_url_title(advice.url) %></h3>
-        <p class='url'><%=link_to advice.url, advice.url %></p>
-        <div class='tags'>
-          <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+  <div class='col-md-1'>
+  </div>
+  <div class='col-md-10 col-md-offset-1'>
+  <% @advices.each do |advice| %>
+    <div class="col-md-5">
+      <div class="thumbnail" >
+        <div class="caption">
+          <h3><%= advice.create_url_title(advice.url) %></h3>
+          <p class='url'><%=link_to advice.url, advice.url %></p>
+          <div class='tags'>
+            <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+          </div>
+          <div class='ratio'>
+           <h4><%= advice.ratio(advice.id) %></h4>
+         </div>
         </div>
-        <div class='ratio'>
-         <h4><%= advice.ratio(advice.id) %></h4>
-       </div>
       </div>
     </div>
+  <%end%> 
   </div>
-<%end%> 
 </div>
