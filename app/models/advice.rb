@@ -16,6 +16,13 @@ class Advice < ActiveRecord::Base
   def create_url_title(url)
     @doc = Nokogiri::HTML(open(url))
     @doc.css('h1').text
+    # title = @doc.css('h1').text
+    # if title.length > 140
+    #   title[0..137]+'...'
+    # else
+    #   title
+    # end
+    # return title
   end
 
   def ratio(id)
