@@ -19,14 +19,14 @@ user_six = User.create( uid: "100006624499145")
 
 a_1 = Advice.create(url: "http://www.popsugar.com/fitness/Yoga-Sciatica-23949884")
 a_2 = Advice.create(url: "http://www.shape.com/lifestyle/mind-and-body/6-imbalances-cause-painand-how-fix-them")
-a_3 = Advice.create(url: "http://greatist.com/move/yoga-healthy-hips")
-a_4 = Advice.create(url: "http://www.bewellbydrfranklipman.com/healthy-living/exercise.html")
+a_3 = Advice.create(url: "http://www.wikihow.com/Align-Your-Hips")
+a_4 = Advice.create(url: "http://yogabycandace.com/blog/2013/9/20/yoga-for-desk-dwellers")
 a_5 = Advice.create(url: "http://breakingmuscle.com/mobility-recovery/its-all-in-the-hip-5-steps-to-fixing-movement-dysfunction")
-#@advice = Advice.create(url: "")
+
 a_1.tag_list.add("sciatia, yoga, hips", :parse => true)
 a_2.tag_list.add("imbalance, hip pain, hips", :parse => true)
-a_3.tag_list.add("yoga, tight hips, hips", :parse => true)
-a_4.tag_list.add("piriformis, sciatia, tight hips, hips",:parse => true)
+a_3.tag_list.add("hips, tight hips, misaligned", :parse => true)
+a_4.tag_list.add("back pain, tight hips, hips",:parse => true)
 a_5.tag_list.add("hips, hip dysfunction, hip injury, hip pain", :parse => true)
 
 a_1.save
@@ -38,7 +38,6 @@ a_5.save
 users = [user_one, user_two, user_three, user_four, user_five, user_six]
 
 users.each do |user|
-  binding.pry
   user.user_advices.create(advice_id: a_1.id)
   user.user_advices.create(advice_id: a_2.id)
   user.user_advices.create(advice_id: a_3.id)
@@ -46,5 +45,26 @@ users.each do |user|
   user.user_advices.create(advice_id: a_5.id)
 end
 
+user_one.user_advices.each do |advice|
+  advice.update(upvote: true)
+end
 
+user_two.user_advices.each do |advice|
+  advice.update(upvote: true)
+end
 
+user_three.user_advices.each do |advice|
+  advice.update(upvote: false)
+end
+
+user_four.user_advices.first.update(upvote: false)
+user_four.user_advices.second.update(upvote: false)
+user_four.user_advices.third.update(upvote: false)
+user_four.user_advices.fourth.update(upvote: false)
+user_four.user_advices.fifth.update(upvote: true)
+
+user_five.user_advices.first.update(upvote: true)
+user_five.user_advices.second.update(upvote: false)
+user_five.user_advices.third.update(upvote: false)
+user_five.user_advices.fourth.update(upvote: false)
+user_five.user_advices.fifth.update(upvote: true)
