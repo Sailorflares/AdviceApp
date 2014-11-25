@@ -8,17 +8,18 @@
 </div>
 
 <div class='row wrapper'>
-  <% @advices.each do |advice| %>
-    <% advice.user_advices.each do |user_advice| %>
+  
+    <% @user.user_advices.each do |user_advice| %>
+    
       <div class='col=md-2'>
       </div>
-      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= user_advice.advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
         <div class="thumbnail" >
           <div class="caption long-text">
-            <h3><%= advice.create_url_title(advice.url) %></h3>
-            <p class='url'><%=link_to advice.url, advice.url %></p>
+            <h3><%= user_advice.advice.create_url_title(user_advice.advice.url) %></h3>
+            <p class='url'><%=link_to user_advice.advice.url, user_advice.advice.url %></p>
             <div class='tags'>
-            <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+            <p>Tags: <%= raw user_advice.advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
             </div>
             <div class='vote-btns'>
               <p>
@@ -38,5 +39,5 @@
         </div>
       </div>
     <% end %>
-  <%end%> 
+   
 </div>

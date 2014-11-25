@@ -6,7 +6,7 @@ class Advice < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates_presence_of :url, :tag_list
+  validates_presence_of :url#, :tag_list
   
   #validate :valid?
 
