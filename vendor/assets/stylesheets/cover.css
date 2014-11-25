@@ -24,10 +24,16 @@ a:hover {
  * Base structure
  */
 
+h1 {
+  font-family: 'Lemon', cursive;
+  font-weight: 900;
+  font-size: 1000%;
+}
+
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-image: url("http://fbstop.com/media/uploads/2014/10/herbs-spices.jpg");
 }
 body {
   color: #fff;
@@ -52,6 +58,7 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  background-color:rgba(255,0,0,0.3);
 }
 
 /* Padding for spacing */
@@ -159,6 +166,9 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
   }
+
 }
