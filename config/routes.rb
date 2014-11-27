@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'sessions#index'
 
   resources :users, :only => [:show] do
-    resources :user_advices, only: [:new, :create, :show]
+    resources :user_advices#, only: [:new, :create, :show]
   end
   resources :advices, only: [:index, :new, :create]
   # resources :sessions
