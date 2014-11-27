@@ -1,36 +1,46 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to 'Remedy', advices_path, :class => 'navbar-brand' %>
-        </div>
-          <form action="/advices" method="get" class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input name="tag" type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav masthead-nav">
-            <% if current_user %>
-              <li>Hey there <strong><%=link_to current_user.name, user_path(current_user) %></strong>!</li>
-              <li class='fb-logout'><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
-              </div>
-            <% end %>
-            </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container fluid">
-
-      <div class="starter-template">
-        <%= yield %>
-      </div>
-
+<nav class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Remedy</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%=link_to 'Home', user_path(current_user) %></li>
+        <li><%= link_to 'Advice Feed', advices_path%></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form action="/advices" method="get" class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input name="tag" type="text" class="form-control" placeholder="Search for a tag!">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <% if current_user %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class='fb-logout'><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        </ul>
+      <% end %>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
