@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Remedy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -9,6 +10,20 @@
 </head>
 
 <body>
-  <%= yield %>
+  <%= render 'layouts/header' %>
+  <div id="wrapper">
+    
+    <div id="sidebar-wrapper">
+      <div class="sidebar-nav">
+        <%= render 'layouts/sidepanel' %>
+      </div>
+    </div>
+    
+    <div id="page-content-wrapper">
+      <%= yield %>
+    </div>
+
+  </div>
 </body>
+
 </html>
