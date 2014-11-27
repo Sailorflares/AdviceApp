@@ -1,12 +1,3 @@
-
-
-<div class="row">
-  <div>
-     <h2><%= link_to '', new_advice_path %><h2>
-    <%= render 'advices/form' %>
-  </div>
-</div>
-
 <div class='row wrapper'>
   
     <% @user.user_advices.order('created_at DESC').each do |user_advice| %>
