@@ -1,34 +1,20 @@
 <div class='row wrapper'>
   
-    <% @user.user_advices.order('created_at DESC').each do |user_advice| %>
-    
-      <div class='col=md-2'>
-      </div>
-      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= user_advice.advice.id %>' data-user-advice-id='<%= user_advice.id %>'>
+    <% @user.advices.each do |advice| %>
+      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= advice.id %>'> 
         <div class="thumbnail" >
           <div class="caption long-text">
-            <h3><%= user_advice.advice.create_url_title(user_advice.advice.url) %></h3>
-            <p class='url'><%=link_to user_advice.advice.url, user_advice.advice.url %></p>
+
+            <h3><%= advice.create_url_title(advice.url) %></h3>
+            <p class='url'><%=link_to advice.url, advice.url %></p>
             <div class='tags'>
-            <p>Tags: <%= raw user_advice.advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
-            </div>
-            <div class='vote-btns'>
-              <p>
-              <% if user_advice.upvote == true %>
-                <%= link_to 'YES', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'get', :role => 'button', :class => 'btn btn-primary btn-yes' %>
-                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %>
-            <% elsif user_advice.upvote == false %> 
-                <%= link_to 'It worked :)', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-yes greybtn', :role => 'button' %>
-                <%= link_to 'NO', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'get', :class => 'btn btn-primary btn-no', :role => 'button' %>
-              <% else %>
-                <%= link_to 'It worked :)', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-yes greybtn', :role => 'button' %>
-                <%= link_to 'Not so much :(', user_user_advice_path(@user.id, user_advice), :remote => true, :method => 'patch', :class => 'btn btn-primary btn-no greybtn', :role => 'button' %>
-              <% end %>
+              <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %>
               </p>
             </div>
-          </div>
-        </div>
-      </div>
+
+          </div>    
+        </div>  
+      </div>  
     <% end %>
    
 </div>
