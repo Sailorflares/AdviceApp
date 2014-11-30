@@ -3,13 +3,19 @@
   </div>
   <div class='col-md-10 col-md-offset-1'>
   <% @advices.each do |advice| %>
+
     <div class="col-md-5">
       <div class="thumbnail">
         <div class="caption long-text">
+<%
+=begin %>
           <h3><%= advice.create_url_title(advice.url) %></h3>
+<%
+=end %>
           <p class='url'><%=link_to advice.url, advice.url %></p>
           <div class='tags'>
-            <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+            <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %>
+            </p>
           </div>
           <div class='ratio'>
            <h4><%= advice.ratio(advice.id) %></h4>
@@ -29,6 +35,7 @@
         </div>
       </div>
     </div>
+
   <%end%> 
   </div>
 </div>

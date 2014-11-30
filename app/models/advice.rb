@@ -1,4 +1,4 @@
-require 'open-uri'
+  require 'open-uri'
 
 class Advice < ActiveRecord::Base
   has_many :user_advices
@@ -8,51 +8,33 @@ class Advice < ActiveRecord::Base
 
   validates_presence_of :url#, :tag_list
   
-  #validate :valid?
-
-  validates_presence_of :url
   validate :check_url
-
-  def create_url_title(url)
-    @doc = Nokogiri::HTML(open(url))
-    @doc.css('h1').text
-    # title = @doc.css('h1').text
-    # if title.length > 140
-    #   title[0..137]+'...'
-    # else
-    #   title
-    # end
-    # return title
+  
+  #after_validation :update_advice_title, if: :url_changed?#check if I can take away this condition
+    
+  
+  def update_advice_title
+    Rails.logger.info "<================ After save, url changed: #{self.url_changed?} ===============>"
+    @doc = Nokogiri::HTML(open(self.url))
+    header = @doc.css('h1').text
+    self.update_attribute(:title, header)
   end
 
-  def ratio(id)
+  def ratio(id)#bad name. Clearly a setter. Names should be descriptive. Always.
     total = UserAdvice.where(:advice_id => id).count
     upvotes = UserAdvice.where(:advice_id => id, :upvote => true).count
     "#{upvotes}/#{total} (#{(upvotes.to_f/total).round(2) * 100}%)"
   end
 
-  # def url_title
-  #   Nokogiri::HTML(open(self.url)).css('title').children.text
-  # end
-
-  # def url_valid?
-  #   uri = URI.parse(url)
-  #   uri.kind_of?(URI::HTTP)
-  # rescue URI::InvalidURIError
-  #   false
-  # end
-
   private
-    def check_url
-      if !self.url.include?('.com')
-        errors[:url] << 'Must include .com'
-      end
-    end
-  # def posts_new_advice(url)
-  #   advice = Advice.find_or_create_by(url: url)
-  # end
 
-  # private
+  def check_url
+    Rails.logger.info "<================ Checking URL: #{url} ===============>"
+    uri = URI.parse(url)
+    if !uri.kind_of?(URI::HTTP) || URI::InvalidURIError#changed from RESCUE that error, return false
+      errors.add(:url, "Sorry, not  valid URL")
+    end  
+  end
 
   # def contained_on_page?
   #   advice = advice_text.gsub(/\s+/, "")

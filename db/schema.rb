@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120232757) do
+ActiveRecord::Schema.define(version: 20141129012534) do
 
   create_table "advices", force: true do |t|
     t.text     "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title",      default: ""
   end
 
   create_table "taggings", force: true do |t|
