@@ -13,9 +13,14 @@
             </div>
           </div> 
 
+          <p style="color:black">Current Vote: <%= UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id).vote %></p>
+
           <div class="btn-group" role="group" id="advice_<%=advice.id%>">
             <%= form_tag("/advices/#{advice.id}/vote") do %>
-              <%= submit_tag "VOTE", :class => "btn btn-default" %>
+              <div class="btn-group" role="group">
+                <%= submit_tag "UP", :class => "btn btn-default up-btn" %>
+                <%= submit_tag "DOWN", :class => "btn btn-default down-btn" %>
+              </div>
             <% end %>
           </div>
 

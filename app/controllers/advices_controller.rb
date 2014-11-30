@@ -30,7 +30,9 @@ class AdvicesController < ApplicationController
 
   def vote
     @useradvice = UserAdvice.find_by(user_id: current_user.id, advice_id: params[:id])
-    raise params.inspect
+    @useradvice.vote = true if params[:commit] == "UP"
+    @useradvice.vote = false if params[:commit] == "DOWN"
+    @useradvice.save
     redirect_to user_path
   end
 
