@@ -45,26 +45,28 @@ users.each do |user|
   user.user_advices.create(advice_id: a_5.id)
 end
 
+=begin
 user_one.user_advices.each do |advice|
-  advice.update(upvote: true)
+  advice.update(vote: true)
 end
 
 user_two.user_advices.each do |advice|
-  advice.update(upvote: true)
+  advice.update(vote: true)
 end
 
 user_three.user_advices.each do |advice|
-  advice.update(upvote: false)
+  advice.update(vote: false)
 end
 
-user_four.user_advices.first.update(upvote: false)
-user_four.user_advices.second.update(upvote: false)
-user_four.user_advices.third.update(upvote: false)
-user_four.user_advices.fourth.update(upvote: false)
-user_four.user_advices.fifth.update(upvote: true)
+user_four.user_advices.first.update(vote: false)
+user_four.user_advices.second.update(vote: false)
+user_four.user_advices.third.update(vote: false)
+user_four.user_advices.fourth.update(vote: false)
+user_four.user_advices.fifth.update(vote: true)
 
-user_five.user_advices.first.update(upvote: true)
-user_five.user_advices.second.update(upvote: false)
-user_five.user_advices.third.update(upvote: false)
-user_five.user_advices.fourth.update(upvote: false)
-user_five.user_advices.fifth.update(upvote: true)
+user_five.user_advices.first.update(vote: true)
+user_five.user_advices.second.update(vote: false)
+user_five.user_advices.third.update(vote: false)
+user_five.user_advices.fourth.update(vote: false)
+user_five.user_advices.fifth.update(vote: true)
+=end

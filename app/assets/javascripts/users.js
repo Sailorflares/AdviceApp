@@ -29,7 +29,7 @@
     
 //   //   $.ajax({
 //   //     type: "POST",
-//   //     url:"/upvotes", 
+//   //     url:"/vo", 
 //   //     success:function(result){
 //   //   }});
 //   // });

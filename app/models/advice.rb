@@ -6,7 +6,7 @@ class Advice < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates_presence_of :url, :tag_list
+  validates_presence_of :url#, :tag_list
   
   validate :check_url
   
@@ -22,8 +22,8 @@ class Advice < ActiveRecord::Base
 
   def ratio(id)#bad name. Clearly a setter. Names should be descriptive. Always.
     total = UserAdvice.where(:advice_id => id).count
-    upvotes = UserAdvice.where(:advice_id => id, :upvote => true).count
-    "#{upvotes}/#{total} (#{(upvotes.to_f/total).round(2) * 100}%)"
+    #upvotes = UserAdvice.where(:advice_id => id, :upvote => true).count
+    #"#{upvotes}/#{total} (#{(upvotes.to_f/total).round(2) * 100}%)"
   end
 
   private
@@ -31,7 +31,7 @@ class Advice < ActiveRecord::Base
   def check_url
     Rails.logger.info "<================ Checking URL: #{url} ===============>"
     uri = URI.parse(url)
-    if !uri.kind_of?(URI::HTTP) || URI::InvalidURIError#changed from RESCUE that error, return false
+    if !uri.kind_of?(URI::HTTP) #|| URI::InvalidURIError#changed from RESCUE that error, return false
       errors.add(:url, "Sorry, not  valid URL")
     end  
   end

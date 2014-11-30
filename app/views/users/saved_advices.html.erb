@@ -14,7 +14,7 @@
           </div> 
 
           <div class="btn-group" role="group" id="advice_<%=advice.id%>">
-            <%= form_tag("/advices/#{advice.id}>/vote") do %>
+            <%= form_tag("/advices/#{advice.id}/vote") do %>
               <%= submit_tag "VOTE", :class => "btn btn-default" %>
             <% end %>
           </div>

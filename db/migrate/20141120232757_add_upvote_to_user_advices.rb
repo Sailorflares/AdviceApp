@@ -1,5 +1,5 @@
 class AddUpvoteToUserAdvices < ActiveRecord::Migration
   def change
-    add_column :user_advices, :upvote, :boolean, :default => nil
+    add_column :user_advices, :vote, :boolean, :default => nil
   end
 end

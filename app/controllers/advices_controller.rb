@@ -30,6 +30,8 @@ class AdvicesController < ApplicationController
 
   def vote
     @useradvice = UserAdvice.find_by(user_id: current_user.id, advice_id: params[:id])
+    raise params.inspect
+    redirect_to user_path
   end
 
   def return_json

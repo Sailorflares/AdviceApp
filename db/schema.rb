@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141129012534) do
     t.integer  "advice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "upvote"
+    t.boolean  "vote"
   end
 
   create_table "users", force: true do |t|
