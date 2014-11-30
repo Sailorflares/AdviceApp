@@ -1,6 +1,6 @@
 <div class='row wrapper'>
   
-    <% @user.advices.each do |advice| %>
+    <% @advices.each do |advice| %>
       <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= advice.id %>'> 
         <div class="thumbnail" >
           <div class="caption long-text">
@@ -11,12 +11,21 @@
               <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
             </div>
           </div>  
-        <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-default">It worked!</button>
-          <button type="button" class="btn btn-default">Not so much.</button>
+        <div class="btn-group" role="group" id="advice_<%=advice.id%>">
+          <button type="button" class="btn btn-default btn-vote up">It worked!</button>
+          <button type="button" class="btn btn-default btn-vote down">Not so much.</button>
         </div>    
         </div>  
       </div>  
     <% end %>
    
 </div>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $(".up").click(function(e) {
+      $.ajax("").done(function(data){
+        alert("done!");
+      });
+    });
+  });
+</script>

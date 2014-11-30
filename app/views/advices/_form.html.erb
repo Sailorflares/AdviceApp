@@ -1,6 +1,6 @@
 <% if current_user %>
   <div class="col-md-6">
-    <%= simple_form_for @advice, :html => {:role => 'form'} do |f| %>
+    <%= simple_form_for Advice.new, :html => {:role => 'form'} do |f| %>
       <%= f.error_notification %>
       <div class='form-group'>
         <%= f.label :url, 'url:' %>

@@ -32,6 +32,10 @@ class AdvicesController < ApplicationController
     @advice = Advice.find(params[:id])
   end
 
+  def return_json
+    render json: [1,2,3,4]
+  end
+
   private
     def advice_params
       params.require(:advice).permit(:url, { tag_list: [] })

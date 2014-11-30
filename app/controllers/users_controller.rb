@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  def show
-    @users = User.all
+  def saved_advices
     @user = current_user
-    @advice = Advice.new
     @advices = @user.advices.order('created_at DESC')
   end
 

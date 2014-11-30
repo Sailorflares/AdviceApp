@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'sessions#index'
 
-  resources :users, :only => [:show] do
-    resources :user_advices#, only: [:new, :create, :show]
-  end
+  #resources :users, :only => [:show] do
+  #  resources :user_advices#, only: [:new, :create, :show]
+  #end
   resources :advices, only: [:index, :new, :create]
   # resources :sessions
 
+  get '/json', to: 'advices#return_json'
+
+  match 'user', to: 'users#saved_advices', via: [:get]
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
