@@ -23,6 +23,7 @@ class AdvicesController < ApplicationController
     @advice = Advice.new
     if params[:tag]
       @advices = Advice.tagged_with(params[:tag]).order('created_at DESC')
+      @tags = params[:tag]
     else
       @advices = Advice.all.order('created_at DESC')
     end
