@@ -8,4 +8,5 @@ class UserAdvicesController < ApplicationController
       @user_advice.update(:upvote => false)
     end
   end
+
 end

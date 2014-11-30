@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   #resources :users, :only => [:show] do
   #  resources :user_advices#, only: [:new, :create, :show]
   #end
-  resources :advices, only: [:index, :new, :create]
-  # resources :sessions
+  resources :advices, only: [:index, :new, :create] do
+    member do
+      post 'vote'
+    end
+  end
 
-  get '/json', to: 'advices#return_json'
+  # resources :sessions
 
   match 'user', to: 'users#saved_advices', via: [:get]
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

@@ -29,7 +29,7 @@ class AdvicesController < ApplicationController
   end
 
   def vote
-    @advice = Advice.find(params[:id])
+    @useradvice = UserAdvice.find_by(user_id: current_user.id, advice_id: params[:id])
   end
 
   def return_json

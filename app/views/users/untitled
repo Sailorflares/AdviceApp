@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  /*
+  $( document ).ready(function() {
+    $(".up").click(function(e) {
+      $.ajax("").done(function(data){
+        alert("done!");
+      });
+    });
+  });
+  */
+</script>
+
+          <div class="btn-group" role="group" id="advice_<%=advice.id%>">
+            <form action="/advices/<%=advice.id%>/vote" method="post">
+              <button type="submit" class="btn btn-default">VOTE</button>
+            </form>
+          </div>

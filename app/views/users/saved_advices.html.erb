@@ -3,6 +3,7 @@
     <% @advices.each do |advice| %>
       <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= advice.id %>'> 
         <div class="thumbnail" >
+
           <div class="caption long-text">
 
             <h3><%= advice.title %></h3>
@@ -10,17 +11,21 @@
             <div class='tags'>
               <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
             </div>
-          </div>  
-        <div class="btn-group" role="group" id="advice_<%=advice.id%>">
-          <button type="button" class="btn btn-default btn-vote up">It worked!</button>
-          <button type="button" class="btn btn-default btn-vote down">Not so much.</button>
-        </div>    
+          </div> 
+
+          <div class="btn-group" role="group" id="advice_<%=advice.id%>">
+            <%= form_tag("/advices/#{advice.id}>/vote") do %>
+              <%= submit_tag "VOTE", :class => "btn btn-default" %>
+            <% end %>
+          </div>
+
         </div>  
       </div>  
     <% end %>
    
 </div>
 <script type="text/javascript">
+  /*
   $( document ).ready(function() {
     $(".up").click(function(e) {
       $.ajax("").done(function(data){
@@ -28,4 +33,5 @@
       });
     });
   });
+  */
 </script>
