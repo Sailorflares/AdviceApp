@@ -6,11 +6,11 @@ class Advice < ActiveRecord::Base
 
   acts_as_taggable
 
-  validates_presence_of :url#, :tag_list
+  validates_presence_of :url, :tag_list
   
   validate :check_url
   
-  #after_validation :update_advice_title, if: :url_changed?#check if I can take away this condition
+  after_validation :update_advice_title, if: :persisted?
     
   
   def update_advice_title

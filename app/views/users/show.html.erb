@@ -8,7 +8,7 @@
             <h3><%= advice.title %></h3>
             <p class='url'><%=link_to advice.url, advice.url %></p>
             <div class='tags'>
-              
+              <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
             </div>
           </div>  
         <div class="btn-group" role="group" aria-label="...">
