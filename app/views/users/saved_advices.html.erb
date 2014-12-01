@@ -1,10 +1,7 @@
-<div class='row wrapper'>
+<% @advices.each do |advice| %>
+  <%= render partial: 'advices/advice', :locals => {:advice => advice} %>
+<% end %>
   
-    <% @advices.each do |advice| %>
-      <%= render partial: 'advices/advice', :locals => {:advice => advice} %>
-    <% end %>
-
-</div>
 <script type="text/javascript">
   /*
   $( document ).ready(function() {

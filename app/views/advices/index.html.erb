@@ -1,12 +1,6 @@
 <% if @tags %>
   <h3>You searched for <%=@tags%></h3>
 <%end%>
-<div class ='row'>
-  <div class='col-md-1'>
-  </div>
-  <div class='col-md-10 col-md-offset-1'>
-    <% @advices.each do |advice| %>
-      <%= render partial: 'advices/advice', :locals => {:advice => advice} %>
-    <%end%> 
-  </div>
-</div>
+<% @advices.each do |advice| %>
+  <%= render partial: 'advices/advice', :locals => {:advice => advice} %>
+<% end %> 
