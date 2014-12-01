@@ -1,33 +1,9 @@
 <div class='row wrapper'>
   
     <% @advices.each do |advice| %>
-      <div class='col-md-8 col-md-offset-2 user-advice' data-advice-id='<%= advice.id %>' data-user-advice-id='<%= advice.id %>'> 
-        <div class="thumbnail" >
-
-          <div class="caption long-text">
-
-            <h3><%= advice.title %></h3>
-            <p class='url'><%=link_to advice.url, advice.url %></p>
-            <div class='tags'>
-              <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
-            </div>
-          </div> 
-
-          <p style="color:black">Current Vote: <%= UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id).vote %></p>
-
-          <div class="btn-group" role="group" id="advice_<%=advice.id%>">
-            <%= form_tag("/advices/#{advice.id}/vote") do %>
-              <div class="btn-group" role="group">
-                <%= submit_tag "UP", :class => "btn btn-default up-btn" %>
-                <%= submit_tag "DOWN", :class => "btn btn-default down-btn" %>
-              </div>
-            <% end %>
-          </div>
-
-        </div>  
-      </div>  
+      <%= render partial: 'advices/advice', :locals => {:advice => advice} %>
     <% end %>
-   
+
 </div>
 <script type="text/javascript">
   /*
