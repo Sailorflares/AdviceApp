@@ -1,40 +1,43 @@
 <div class='col-md-5'>
-    <div class="thumbnail" >
+  <div class="thumbnail" >
 
-      <div class="caption long-text">
+    <div class="caption long-text">
+      <h3><%= advice.title %></h3>
+      <p class='url'><%=link_to advice.url, advice.url %></p>
+      <div class='tags'>
+        <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
+      </div>
+    </div> 
 
-        <h3><%= advice.title %></h3>
-        <p class='url'><%=link_to advice.url, advice.url %></p>
-        <div class='tags'>
-          <p>Tags: <%= raw advice.tag_list.map { |t| link_to t,  "/advices?tag=#{t}" }.join(', ') %></p>
-        </div>
-      </div> 
-
-      <% if UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id) %>
-        <p style="color:black">Current Vote: <%= UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id).vote %></p>
-        <div class="btn-group" role="group" id="advice_<%=advice.id%>">
-          <%= form_tag("/advices/#{advice.id}/vote") do %>
-            <div class="btn-group" role="group">
-              <%= submit_tag "UP", :class => "btn btn-default up-btn" %>
-              <%= submit_tag "DOWN", :class => "btn btn-default down-btn" %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <%= simple_form_for @advice, :html => {:role => 'form'} do |f| %>
-          <%= f.error_notification %>
-          <div class='form-group'>
-            <%= f.hidden_field :url, :value => "#{advice.url}" %>
+    <% if UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id) %>
+      
+      <p style="color:black">Current Vote: <%= UserAdvice.find_by(user_id: current_user.id, advice_id: advice.id).vote %></p>
+      <div class="btn-group" role="group" id="advice_<%=advice.id%>">
+        <%= form_tag("/advices/#{advice.id}/vote") do %>
+          <div class="btn-group" role="group">
+            <%= submit_tag "UP", :class => "btn btn-default up-btn" %>
+            <%= submit_tag "DOWN", :class => "btn btn-default down-btn" %>
           </div>
-          <div class='form-group'>
-            <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
-          </div>
-          <%= f.submit 'Add!', :class => 'btn btn-default add' %>
         <% end %>
+      </div>
+
+    <% else %>
+
+      <%= simple_form_for @advice, :html => {:role => 'form'} do |f| %>
+        <%= f.error_notification %>
+        <div class='form-group'>
+          <%= f.hidden_field :url, :value => "#{advice.url}" %>
+        </div>
+        <div class='form-group'>
+          <%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+        </div>
+        <%= f.submit 'Add!', :class => 'btn btn-default add' %>
       <% end %>
 
-
-
+    <% end %>
+    <div style="color:black">
+      <%= advice.num_saved %>
+    </div>
       
-    </div>  
+  </div>  
 </div>

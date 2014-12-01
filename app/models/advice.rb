@@ -20,10 +20,20 @@ class Advice < ActiveRecord::Base
     self.update_attribute(:title, header)
   end
 
-  def ratio(id)#bad name. Clearly a setter. Names should be descriptive. Always.
-    total = UserAdvice.where(:advice_id => id).count
-    #upvotes = UserAdvice.where(:advice_id => id, :upvote => true).count
-    #"#{upvotes}/#{total} (#{(upvotes.to_f/total).round(2) * 100}%)"
+  def upvotes
+    UserAdvice.where(:advice_id => id, :vote => true).count
+  end
+
+  def downvotes
+    UserAdvice.where(:advice_id => id, :vote => false).count
+  end
+
+  def num_votes
+    upvotes + downvotes
+  end
+
+  def num_saved
+    UserAdvice.where(:advice_id => id).count
   end
 
   private
