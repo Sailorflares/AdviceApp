@@ -28,6 +28,12 @@ class Advice < ActiveRecord::Base
     UserAdvice.where(:advice_id => id, :vote => false).count
   end
 
+  def ratio
+    return 100 if downvotes == 0
+    return 0 if upvotes == 0
+    upvotes/downvotes
+  end
+
   def num_votes
     upvotes + downvotes
   end
